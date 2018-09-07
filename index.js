@@ -41,6 +41,20 @@ var set = {
 			return("杨")
 		}
 		// 修改
+		
+		// 修改
+		/*
+		if( num >=150+odds*10 && num<150+odds*11){
+			return("丫丫")
+		}else if( num >=150+odds*7 && num<150+odds*10){
+			return("丫")
+		}else if( num >=150+odds*2 && num<150+odds*7 ){
+			return("孙杨")
+		}else{
+			return("杨")
+		}
+		*/
+		// 修改
 	},
 	
 	//在相应的位置出现数字
