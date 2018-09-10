@@ -31,18 +31,6 @@ var set = {
 		odds = Math.floor(odds)*2
 		let num = Math.ceil(Math.random()*150+odds*11);
 		// 修改
-		if( num >=150+odds*10 && num<150+odds*11){
-			return("丫丫")
-		}else if( num >=150+odds*7 && num<150+odds*10){
-			return("丫")
-		}else if( num >=150+odds*2 && num<150+odds*7 ){
-			return("孙杨")
-		}else{
-			return("杨")
-		}
-		// 修改
-		
-		// 修改
 		/*
 		if( num >=150+odds*10 && num<150+odds*11){
 			return("丫丫")
@@ -54,6 +42,20 @@ var set = {
 			return("杨")
 		}
 		*/
+		// 修改
+		
+		// 修改
+		
+		if( num >=150+odds*10 && num<150+odds*11){
+			return("2")
+		}else if( num >=150+odds*7 && num<150+odds*10){
+			return("4")
+		}else if( num >=150+odds*2 && num<150+odds*7 ){
+			return("8")
+		}else{
+			return("16")
+		}
+		
 		// 修改
 	},
 	
@@ -217,8 +219,9 @@ var set = {
 		for( let i=0;i<arr.length-1;i++ ){
 			if( arr[i] == arr[i+1] ){
 				arr.splice(i,1);
-			//	arr[i] = arr[i]*2;
+				arr[i] = arr[i]*2;
 			// 孙杨版
+			/*
 				switch( arr[i] ){
 					case "杨":
 					arr[i] = "孙杨"
@@ -240,6 +243,7 @@ var set = {
 					arr[i] = "杨欣"
 					break;
 				}
+				*/
 			// 结束
 			}
 		}
