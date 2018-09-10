@@ -323,21 +323,32 @@ var startx, starty;
 	}
 	
 	//取消页面滑动
-	 function stopDrop() {
-        var lastY; //最后一次y坐标点 
-        $(document.body).on('touchstart', function(event) {
-            lastY = event.originalEvent.changedTouches[0].clientY; //点击屏幕时记录最后一次Y度坐标。 
-        });
-        $(document.body).on('touchmove', function(event) {
-            var y = event.originalEvent.changedTouches[0].clientY;
-            var st = $(this).scrollTop(); //滚动条高度 
-            if (y >= lastY && st <= 10) { //如果滚动条高度小于0，可以理解为到顶了，且是下拉情况下，阻止touchmove事件。 
-                lastY = y;
-                event.preventDefault();
-            }
-            lastY = y;
-        });
-    }
-    stopDrop(); // 调用 不过效果不是很彻底
+	document.addEventListener('touchstart',function(event){
+		event.preventDefault();
+	});
+	document.querySelector('body').addEventListener('touchstart', function (ev) {
+		ev.preventDefault();
+	});
+
+	var scroll_start=0;//定义滑动时的起点
+	function handler(){//禁止默认滑动函数
+	 event.preventDefault();
+	}
+	document.addEventListener("touchstart",function(e){
+	 scroll_start = e.changedTouches[0].clientY;//设置起点为触摸时的点
+	 if($('#bodycthead').offset().top==0){//如果触摸时是滑动块在顶部则禁用默认滑动
+	  document.addEventListener('touchmove', handler, false);
+	 }
+	});
+	document.addEventListener("touchmove",function(e){
+	 $("title").html(e.changedTouches[0].clientY-scroll_start);
+	 if($('#bodycthead').offset().top==0){//想做的是中断滑动并禁用默认滑动，暂时没找到中断的方法
+	  document.addEventListener('touchmove', handler, false);
+	 }
+	 if((e.changedTouches[0].clientY-scroll_start)<0){//如果是向上滑动则恢复默认滑动
+	  document.removeEventListener('touchmove', handler, false);
+	 }
+	});
+
 })()
 
