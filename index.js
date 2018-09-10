@@ -324,6 +324,11 @@ var startx, starty;
 	
 	//取消页面滑动
 	document.ontouchstart=function(){ return false; }
-	
+	document.body.addEventListener('touchmove', (e) => {
+	  e.preventDefault();
+	});
+	document.body.addEventListener('touchmove', (e) => {
+	  e.preventDefault();
+	}, { passive: false });
 })()
 
