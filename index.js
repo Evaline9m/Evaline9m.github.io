@@ -196,6 +196,16 @@ var set = {
 			set.inspect()
 			// 更新最高分
 			document.getElementsByClassName( "top" )[0].innerHTML = topNum;
+			
+			if( topNum<500 ){
+				num = 1;
+			}else if( topNum>500 && topNum<1000 ){
+				num = 2;
+			}else if( topNum>1000 && topNum<2000 ){
+				num = 3;
+			}else{
+				num = 4;
+			}
 		}
 		
 		
@@ -311,6 +321,9 @@ var startx, starty;
 	start.onclick = function(){
 		set.init()
 	}
+	
+	//取消页面滑动
+	document.ontouchstart=function(){ return false; }
 	
 })()
 
