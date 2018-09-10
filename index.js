@@ -7,6 +7,8 @@ var set = {
 		for(let i = 0;i<16;i++){
 			document.getElementsByClassName(className[i])[0].innerHTML = "" 
 		}
+		set.creat()
+		set.creat()
 	},
 	
 	//计算应该出现数字的位置
@@ -26,37 +28,22 @@ var set = {
 		//odds代表出现高数的几率,odds越大越容易出现高数字.范围为0-4整数
 		//如果范围不是0-4强制改为2
 		if(odds>4||odds<0){
-			odds == 2
+			odds == 4
 		}
 		odds = Math.floor(odds)*2
-		let num = Math.ceil(Math.random()*150+odds*11);
-		// 修改
-		/*
-		if( num >=150+odds*10 && num<150+odds*11){
-			return("丫丫")
-		}else if( num >=150+odds*7 && num<150+odds*10){
-			return("丫")
-		}else if( num >=150+odds*2 && num<150+odds*7 ){
-			return("孙杨")
-		}else{
-			return("杨")
-		}
-		*/
-		// 修改
+		let num = Math.ceil(Math.random()*40+odds*18);
 		
-		// 修改
 		
-		if( num >=150+odds*10 && num<150+odds*11){
+		if( num<=40+odds*10){
 			return("2")
-		}else if( num >=150+odds*7 && num<150+odds*10){
+		}else if(num<40+odds*15){
 			return("4")
-		}else if( num >=150+odds*2 && num<150+odds*7 ){
+		}else if(num<40+odds*17 ){
 			return("8")
 		}else{
 			return("16")
 		}
 		
-		// 修改
 	},
 	
 	//在相应的位置出现数字
@@ -220,31 +207,6 @@ var set = {
 			if( arr[i] == arr[i+1] ){
 				arr.splice(i,1);
 				arr[i] = arr[i]*2;
-			// 孙杨版
-			/*
-				switch( arr[i] ){
-					case "杨":
-					arr[i] = "孙杨"
-					break;
-			
-					case "孙杨":
-					arr[i] = "丫"
-					break;
-					
-					case "丫":
-					arr[i] = "丫丫"
-					break;
-					
-					case "丫丫":
-					arr[i] = "佳欣"
-					break;
-					
-					case "佳欣":
-					arr[i] = "杨欣"
-					break;
-				}
-				*/
-			// 结束
 			}
 		}
 	}
@@ -258,11 +220,10 @@ var arr1=["a","b","c","d"];
 var arr2=["1","2","3","4"];
 var num = 1;
 var topNum = 2;
+var start = document.getElementsByClassName("start")[0];
 
 (function (){
-//	set.init()
-	set.creat()
-	set.creat()
+	set.init()
 	window.onkeydown = function(e){
 		switch(e.keyCode){
 			case 37:
@@ -282,5 +243,10 @@ var topNum = 2;
 			break;
 		}
 	}
+	
+	start.onclick = function(){
+		set.init()
+	}
+	
 })()
 
